@@ -1,17 +1,15 @@
 [package]
-name = "server"
+name = "client"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 tokio = { workspace = true }
 anyhow = { workspace = true }
-signals = { path = "../shared/rust/signals" }
 tracing = { workspace = true }
 tonic = { workspace = true }
-tonic-reflection = { workspace = true }
 device_command = { path = "../device_command" }
 tonic-tracing-opentelemetry = { workspace = true }
-tracing-opentelemetry-instrumentation-sdk = { workspace = true }
+tower = { workspace = true }
 init-tracing-opentelemetry = { workspace = true }
 opentelemetry_sdk = { workspace = true }

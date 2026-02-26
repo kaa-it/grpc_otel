@@ -1,5 +1,10 @@
+set dotenv-load
+
 [doc('server')]
 mod server './server'
+
+[doc('client')]
+mod client './client'
 
 default:
     @just --list --unsorted

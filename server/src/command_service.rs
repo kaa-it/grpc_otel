@@ -16,14 +16,16 @@ impl CommandServiceImpl {
 
 #[tonic::async_trait]
 impl CommandService for CommandServiceImpl {
+    #[tracing::instrument(skip(self, request))]
     async fn send_command(
         &self,
         request: Request<SendCommandRequest>,
     ) -> Result<Response<SendCommandResponse>, Status> {
-        
+        let trace_id = tracing_opentelemetry_instrumentation_sdk::find_current_trace_id();
+
         let request = request.into_inner();
 
-        tracing::info!("Received command: {:?}", request.command);
+        tracing::info!("Received command: {:?} from trace {:?}", request.command, trace_id);
 
         self.fake().await;
 

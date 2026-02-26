@@ -6,12 +6,14 @@ use tonic_tracing_opentelemetry::middleware::{filters, server};
 mod command_service;
 
 pub async fn run() -> anyhow::Result<()> {
-    telemetry::init_subscriber(
-        "server".to_string(),
-        "info".to_string(),
-        Some("http://localhost:4317".to_string()),
-        std::io::stdout,
-    );
+    // telemetry::init_subscriber(
+    //     "server".to_string(),
+    //     "info".to_string(),
+    //     Some("http://localhost:4317".to_string()),
+    //     std::io::stdout,
+    // );
+
+    let _ = init_tracing_opentelemetry::TracingConfig::development().init_subscriber()?;
 
     let (sender, receiver) = watch::channel("work");
 
