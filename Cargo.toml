@@ -1,0 +1,46 @@
+[workspace]
+members = [
+    "server",
+    "shared/rust/telemetry",
+    "shared/rust/signals",
+    "device_command",
+    "shared/rust/resilient_grpc_client",
+]
+resolver = "3"
+
+[workspace.dependencies]
+anyhow = "1.0.75"
+tonic = "0.14"
+prost = "0.14"
+tonic-prost = "0.14"
+tonic-prost-build = "0.14"
+tokio = { version = "1.49.0", features = ["full"] }
+serde = { version = "1.0.189", features = ["derive"] }
+windows-service = "0.8.0"
+cfg-if = "1.0.0"
+config = "0.13.3"
+tracing = { version = "0.1.41", features = ["log"] }
+tracing-subscriber = { version = "0.3.19", features = ["registry", "env-filter"] }
+opentelemetry = { version = "0.28.0" }
+opentelemetry-otlp = { version = "0.28.0", features = ["default", "grpc-tonic"] }
+opentelemetry_sdk = "0.28.0"
+tracing-opentelemetry = "0.29.0"
+tracing-bunyan-formatter = "0.3.10"
+futures-util = "0.3.28"
+once_cell = "1.19.0"
+thiserror = "1.0.50"
+signal-hook = "0.3.17"
+signal-hook-tokio = { version = "0.3.1", features = ["futures-v0_3"] }
+ctrlc = "3.4.1"
+strum = { version = "0.25.0", features = ["derive"] }
+uuid = { version = "1.8.0", features = ["v4", "serde"] }
+kameo = "0.19"
+tonic-reflection = { version = "0.14", features = ["server"] }
+kameo_actors = "0.4.0"
+bytemuck = "1.25.0"
+tokio-util = "0.7.18"
+backoff = "0.4"
+tower = { version = "0.5", features = ["retry", "util" ] }
+futures = "0.3"
+async-trait = "0.1"
+tonic-tracing-opentelemetry = "0.32"

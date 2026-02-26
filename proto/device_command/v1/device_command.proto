@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package device_command.v1;
+
+option go_package = "firefly/devicecommand/pkg;devicecommandservice";
+
+message SendCommandRequest {
+  oneof command {
+    ConnectCommand connect = 1;
+    DisconnectCommand disconnect = 2;
+  }
+}
+
+message ConnectCommand {}
+message DisconnectCommand {}
+
+message SendCommandResponse {
+  oneof response {
+    ConnectedResponse connected = 1;
+    DisconnectedResponse disconnected = 2;
+    FailedResponse failed = 3;
+  }
+}
+
+message ConnectedResponse {}
+message DisconnectedResponse {}
+
+message FailedResponse {
+  CommandError error = 1;
+}
+
+message CommandError {
+  oneof error {
+    string connect_failed = 1;
+    string disconnect_failed = 2;
+    string timeout = 3;
+  }
+}
+
+service CommandService {
+  rpc SendCommand(SendCommandRequest) returns (SendCommandResponse);
+}

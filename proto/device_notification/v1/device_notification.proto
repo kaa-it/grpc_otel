@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option go_package = "firefly/devicenotification/pkg;device_notificationservice";
+
+package device_notification.v1;
+
+message SendNotificationRequest {
+  string device_id = 1;
+  oneof notification {
+    HelloNotification hello = 2;
+    ConnectedNotification connected = 3;
+  }
+}
+
+message ConnectedNotification {
+  bool status = 1;
+}
+
+message HelloNotification {
+  bool connected = 2;
+}
+
+service NotificationService {
+  rpc SendNotification(SendNotificationRequest) returns (google.protobuf.Empty);
+}

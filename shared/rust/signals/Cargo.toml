@@ -1,0 +1,22 @@
+[package]
+name = "signals"
+version = "0.1.0"
+edition = "2021"
+publish = ["kellnr"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = { workspace = true }
+futures-util = { workspace = true }
+once_cell = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+
+[target.'cfg(not(windows))'.dependencies]
+signal-hook = { workspace = true }
+signal-hook-tokio = { workspace = true }
+
+[target.'cfg(windows)'.dependencies]
+ctrlc = { workspace = true }
+windows-service = {workspace = true }
