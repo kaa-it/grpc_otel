@@ -20,10 +20,10 @@ cfg-if = "1.0.0"
 config = "0.13.3"
 tracing = { version = "0.1.41", features = ["log"] }
 tracing-subscriber = { version = "0.3.19", features = ["registry", "env-filter"] }
-opentelemetry = { version = "0.28.0" }
-opentelemetry-otlp = { version = "0.28.0", features = ["default", "grpc-tonic"] }
+opentelemetry = { version = "0.31.0" }
+opentelemetry-otlp = { version = "0.31.0", features = ["default", "grpc-tonic"] }
 opentelemetry_sdk = "0.31.0"
-tracing-opentelemetry = "0.29.0"
+tracing-opentelemetry = "0.32.0"
 tracing-bunyan-formatter = "0.3.10"
 futures-util = "0.3.28"
 once_cell = "1.19.0"
@@ -44,4 +44,4 @@ futures = "0.3"
 async-trait = "0.1"
 tonic-tracing-opentelemetry = "0.32"
 tracing-opentelemetry-instrumentation-sdk = "0.32"
-init-tracing-opentelemetry = { version = "0.32", features = ["otlp", "tracer", "tracing_subscriber_ext", "logfmt"] }
+init-tracing-opentelemetry = { version = "0.32", features = ["otlp", "tracer", "tracing_subscriber_ext", "logfmt", "metrics"] }

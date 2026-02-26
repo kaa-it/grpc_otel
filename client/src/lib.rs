@@ -7,7 +7,7 @@ use tonic_tracing_opentelemetry::middleware::client::{OtelGrpcLayer, OtelGrpcSer
 use tower::ServiceBuilder;
 
 pub async fn run() -> anyhow::Result<()> {
-    let _ = init_tracing_opentelemetry::TracingConfig::development().init_subscriber()?;
+    let _guard = init_tracing_opentelemetry::TracingConfig::development().init_subscriber()?;
     // telemetry::init_subscriber(
     //     "client".to_string(),
     //     "info".to_string(),

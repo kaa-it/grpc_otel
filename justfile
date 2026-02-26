@@ -1,5 +1,3 @@
-set dotenv-load
-
 [doc('server')]
 mod server './server'
 
@@ -17,4 +15,4 @@ jaeger:
       -p 5778:5778 \
       -p 9411:9411 \
       -e COLLECTOR_OTLP_ENABLED=true \
-      docker.io/jaegertracing/jaeger:2.4.0
+      docker.io/jaegertracing/jaeger:2.15.0

@@ -13,7 +13,7 @@ pub async fn run() -> anyhow::Result<()> {
     //     std::io::stdout,
     // );
 
-    let _ = init_tracing_opentelemetry::TracingConfig::development().init_subscriber()?;
+    let _guard = init_tracing_opentelemetry::TracingConfig::debug().init_subscriber()?;
 
     let (sender, receiver) = watch::channel("work");
 
