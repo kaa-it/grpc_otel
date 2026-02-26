@@ -13,3 +13,4 @@ tonic-tracing-opentelemetry = { workspace = true }
 tower = { workspace = true }
 init-tracing-opentelemetry = { workspace = true }
 opentelemetry_sdk = { workspace = true }
+resilient_grpc_client = { path = "../shared/rust/resilient_grpc_client" }

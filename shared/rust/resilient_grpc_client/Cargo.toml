@@ -1,0 +1,14 @@
+[package]
+name = "resilient_grpc_client"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+backoff = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tower = { workspace = true }
+futures = { workspace = true }
+async-trait = { workspace = true }
+tonic = { workspace = true }
+tokio = { workspace = true }

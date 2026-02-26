@@ -5,9 +5,10 @@ use device_command::{
 use tonic::transport::Channel;
 use tonic_tracing_opentelemetry::middleware::client::{OtelGrpcLayer, OtelGrpcService};
 use tower::ServiceBuilder;
+use tracing::info;
 
 pub async fn run() -> anyhow::Result<()> {
-    let _guard = init_tracing_opentelemetry::TracingConfig::development().init_subscriber()?;
+    let _guard = init_tracing_opentelemetry::TracingConfig::debug().init_subscriber()?;
     // telemetry::init_subscriber(
     //     "client".to_string(),
     //     "info".to_string(),
@@ -16,10 +17,13 @@ pub async fn run() -> anyhow::Result<()> {
     // );
 
     let channel = Channel::from_shared("http://localhost:50051".to_string())?
-        .connect()
-        .await?;
+        .connect_lazy();
+        //.await?;
+
+    info!("Channel connected");
 
     let channel = ServiceBuilder::new()
+        //.layer(resilient_grpc_client::retry_middleware::RetryLayer::new(resilient_grpc_client::retry_policy::RetryConfig::default()))
         .layer(OtelGrpcLayer::default())
         .service(channel);
 

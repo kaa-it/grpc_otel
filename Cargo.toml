@@ -4,6 +4,7 @@ members = [
     "shared/rust/signals",
     "device_command",
     "client",
+    "shared/rust/resilient_grpc_client"
 ]
 resolver = "3"
 
